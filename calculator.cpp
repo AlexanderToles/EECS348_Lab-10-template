@@ -29,7 +29,7 @@ double parse_number(const string &expression){
     }
     //remove leading 0s
     if(operator_flag){
-        if(fixed_str[1]=='+'){
+        if(fixed_str[0]=='+'){
             fixed_str.erase(fixed_str.begin(),fixed_str.begin()+1);
         }
         while(fixed_str[1]=='0' && fixed_str[2]!='.'){
