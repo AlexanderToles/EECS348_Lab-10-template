@@ -1,6 +1,7 @@
 #include "calculator.hpp"
 #include <string>
 using namespace std;
+
 double parse_number(const string &expression){
     string fixed_str = expression;
     bool decimal_flag = 0;
