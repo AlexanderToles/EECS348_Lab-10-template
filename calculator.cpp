@@ -42,20 +42,29 @@ double parse_number(const string &expression){
         }
     }
 
+    int offset = 0;
+    if(fixed_str[0]=='-'){
+        offset=1;
+    }
     size_t found = fixed_str.find_first_of("."); 
-    for(int i = 0;i < found;++i){
+    //cout << "pos: " << found << " length: " << expression.length()<< "\n";
+    for(int i = offset;i < found;++i){
+        //cout << "i: " << i << " expression[i]: " << expression[i] << "\n";
         int val = fixed_str[i]-'0';
         parsed_num+=(val)*pow(10,found-i-1);
     }
+    //cout << "After pre-decimal: " << parsed_num << " \n";
     int dec_place = 0;
     for(int i = found+1;i < fixed_str.length();++i){
         dec_place++;
+        //cout << "i: " << i << " expression[i]: " << expression[i] << " dec_place: "<<dec_place<<"\n";
         int val = fixed_str[i]-'0';
+        //cout << "(val)*pow(0.1,dec_place): " << (val)*pow(0.1,dec_place) << "\n"; 
         parsed_num+=(val)*pow(0.1,dec_place);
     }
-    if(fixed_str[0] == '-'){
-        parsed_num*= -1;
+        //cout << "After post-decimal: " << parsed_num << " \n";
+    if(fixed_str[0]=='-'){
+        parsed_num*=-1;
     }
-
-    return(parsed_num);
+    return parsed_num;
 }
