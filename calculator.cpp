@@ -39,5 +39,5 @@ double parse_number(const string &expression){
             fixed_str.erase(fixed_str.begin(),fixed_str.begin()+1);
         }
     }
-    return(stod(fixed_str));
+    return(stod(expression));
 }
